@@ -20,8 +20,6 @@ class IdeaListResponse {
   IdeaListResponse({this.mapId, this.ideas});
 
   factory IdeaListResponse.fromJson(Map<String, dynamic> parsedJson) {
-    print(parsedJson);
-
     var list = parsedJson['ideas'] as List;
     List<IdeaResponse> ideaList =
         list.map((i) => IdeaResponse.fromJson(i)).toList();
