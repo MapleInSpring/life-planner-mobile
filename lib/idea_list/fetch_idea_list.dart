@@ -14,17 +14,15 @@ Future<IdeaListResponse> fetchIdeaList() async {
 }
 
 class IdeaListResponse {
-  final int mapId;
   final List<IdeaResponse> ideas;
 
-  IdeaListResponse({this.mapId, this.ideas});
+  IdeaListResponse({this.ideas});
 
-  factory IdeaListResponse.fromJson(Map<String, dynamic> parsedJson) {
-    var list = parsedJson['ideas'] as List;
+  factory IdeaListResponse.fromJson(List<dynamic> list) {
     List<IdeaResponse> ideaList =
         list.map((i) => IdeaResponse.fromJson(i)).toList();
 
-    return IdeaListResponse(mapId: parsedJson['mapId'], ideas: ideaList);
+    return IdeaListResponse(ideas: ideaList);
   }
 }
 
