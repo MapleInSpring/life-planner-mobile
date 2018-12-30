@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "740583806926",
+    "firebase_url": "https://life-planner-99636.firebaseio.com",
+    "project_id": "life-planner-99636",
+    "storage_bucket": "life-planner-99636.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740583806926:android:0e612400d1cf6fcf",
+        "android_client_info": {
+          "package_name": "spring.maple.lifeplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740583806926-occimjh7gvjo4p93pcbpa28169t9714e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIOiOD0Jh3K2ZD8EaIAtAOE052tYezgjw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
