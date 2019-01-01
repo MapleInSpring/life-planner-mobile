@@ -2,39 +2,42 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-Future<ActionListResponse> fetchActionList() async {
+Future<ActionList> fetchActionList() async {
   final response =
   await http.get('https://life-planner-api-dev.cfapps.io/actions');
 
   if (response.statusCode == 200) {
-    return ActionListResponse.fromJson(jsonDecode(response.body));
+    return ActionList.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to load post');
   }
 }
 
-class ActionListResponse {
-  final List<ActionResponse> actions;
+class ActionList {
+  final List<Action> actions;
 
-  ActionListResponse({this.actions});
+  ActionList({this.actions});
 
-  factory ActionListResponse.fromJson(List<dynamic> list) {
-    List<ActionResponse> actionList =
-        list.map((i) => ActionResponse.fromJson(i)).toList();
+  factory ActionList.fromJson(List<dynamic> list) {
+    List<Action> actionList =
+        list.map((i) => Action.fromJson(i)).toList();
 
-    return ActionListResponse(actions: actionList);
+    return ActionList(actions: actionList);
   }
 }
 
-class ActionResponse {
+class Action {
   final int id;
   final String title;
   final int parent;
 
-  ActionResponse({this.id, this.title, this.parent});
+  Action({this.id, this.title, this.parent});
 
-  factory ActionResponse.fromJson(Map<String, dynamic> json) {
-    return ActionResponse(
-        id: json['id'], title: json['title'], parent: json['parent']);
+  factory Action.fromJson(Map<String, dynamic> json) {
+    return Action(
+        id: json['id'],
+        title: json['title'],
+        parent: json['parent']
+    );
   }
 }
