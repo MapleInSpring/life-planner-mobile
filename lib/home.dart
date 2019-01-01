@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_planner/action_list/action_list.dart';
-import 'package:life_planner/action_list/fetch_action_list.dart';
-import 'package:life_planner/current_list/current_list.dart';
+import 'package:life_planner/app_widgets/action_list/action_list.dart';
+import 'package:life_planner/app_widgets/current_list/current_list.dart';
 
 class Home extends StatefulWidget {
   @override
