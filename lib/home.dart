@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:life_planner/action_list/action_list.dart';
 import 'package:life_planner/action_list/fetch_action_list.dart';
-import 'package:life_planner/idea_list/fetch_idea_list.dart';
-import 'package:life_planner/idea_list/idea_list.dart';
+import 'package:life_planner/current_list/current_list.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,8 +13,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    ActionList(actionList: fetchActionList(),),
-    IdeaList(ideaList: fetchIdeaList(),)
+    CurrentItemListWidget(),
+    ActionListWidget()
   ];
 
   @override
