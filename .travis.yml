@@ -29,7 +29,7 @@ deploy:
   skip_cleanup: true
   provider: testfairy
   api-key: $TESTFAIRY_API_KEY
-  app-file: build/MapleInSpring/life-planner-mobile/build/app/outputs/apk/release/app-release.apk
+  app-file: build/app/outputs/apk/release/app-release.apk
 cache:
   directories:
     - "$HOME/.pub-cache"
