@@ -22,3 +22,8 @@ install:
   - export PATH=./flutter/bin:$PATH
 script:
   - flutter build apk
+
+cache:
+  directories:
+    - $HOME/.pub-cache
+
