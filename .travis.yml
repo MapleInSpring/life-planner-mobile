@@ -14,6 +14,8 @@ android:
     - addon-google_apis-google-21
 before_install:
   - git clone -b dev https://github.com/flutter/flutter.git
+  - wget http://services.gradle.org/distributions/gradle-4.10.2-all.zip
+  - unzip gradle-4.10.2-all.zip
 install:
   - export GRADLE_HOME=$PWD/gradle-3.5
   - export PATH=$GRADLE_HOME/bin:$PATH
