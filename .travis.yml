@@ -16,8 +16,7 @@ before_install:
   - git clone -b dev https://github.com/flutter/flutter.git
   - wget http://services.gradle.org/distributions/gradle-4.10.2-bin.zip
   - unzip gradle-4.10.2-bin.zip
-  - openssl aes-256-cbc -K $encrypted_326adcb1660c_key -iv $encrypted_326adcb1660c_iv
-    -in android/key.jks.enc -out android/key.jks -d
+  - openssl aes-256-cbc -K $encrypted_326adcb1660c_key -iv $encrypted_326adcb1660c_iv -in android/key.jks.enc -out android/key.jks -d
 install:
   - export GRADLE_HOME=$PWD/gradle-4.10.2
   - export PATH=$GRADLE_HOME/bin:$PATH
