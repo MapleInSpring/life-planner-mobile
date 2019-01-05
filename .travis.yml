@@ -23,10 +23,11 @@ install:
   - export PATH=./flutter/bin:$PATH
 script:
 - flutter build apk
+- ls build/app/outputs/apk/release/
 deploy:
   provider: testfairy
   api-key: $TESTFAIRY_API_KEY
-  app-file: android/build/app/outputs/apk/release/app-release.apk
+  app-file: build/app/outputs/apk/release/app-release.apk
 cache:
   directories:
     - "$HOME/.pub-cache"
