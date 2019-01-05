@@ -13,7 +13,7 @@ android:
     - extra-google-m2repository
     - addon-google_apis-google-21
 before_install:
-  - git clone -b alpha https://github.com/flutter/flutter.git
+  - git clone -b dev https://github.com/flutter/flutter.git
 install:
   - export GRADLE_HOME=$PWD/gradle-3.5
   - export PATH=$GRADLE_HOME/bin:$PATH
