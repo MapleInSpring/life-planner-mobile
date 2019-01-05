@@ -24,6 +24,7 @@ install:
 script:
 - flutter build apk
 - ls build/app/outputs/apk/release/
+- pwd
 deploy:
   provider: testfairy
   api-key: $TESTFAIRY_API_KEY
