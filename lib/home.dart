@@ -28,12 +28,12 @@ class _HomeState extends State<Home> {
         currentIndex: _currentIndex, // new
         items: [
           new BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
-            title: Text('Current'),
+            icon: Icon(Icons.star),
+            title: Text('行'),
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.watch_later),
-            title: Text('All'),
+            icon: Icon(Icons.description),
+            title: Text('知'),
           )
         ],
       ),
