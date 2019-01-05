@@ -71,3 +71,8 @@ build/
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# CI added files
+flutter/**
+gradle-4.10.2/**
+gradle-4.10.2-bin.zip
