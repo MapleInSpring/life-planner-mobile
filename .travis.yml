@@ -1,29 +1,28 @@
 sudo: required
 language: android
 os:
-  - linux
+- linux
 android:
   components:
-    - tools
-    - platform-tools
-    - build-tools-28.0.3
-    - android-27 - extra-android-support
-    - extra-google-google_play_services
-    - extra-android-m2repository
-    - extra-google-m2repository
-    - addon-google_apis-google-21
+  - tools
+  - platform-tools
+  - build-tools-28.0.3
+  - android-27 - extra-android-support
+  - extra-google-google_play_services
+  - extra-android-m2repository
+  - extra-google-m2repository
+  - addon-google_apis-google-21
 before_install:
-  - git clone -b dev https://github.com/flutter/flutter.git
-  - wget http://services.gradle.org/distributions/gradle-4.10.2-bin.zip
-  - unzip gradle-4.10.2-bin.zip
   - openssl aes-256-cbc -K $encrypted_326adcb1660c_key -iv $encrypted_326adcb1660c_iv -in android/key.jks.enc -out android/key.jks -d
+- git clone -b dev https://github.com/flutter/flutter.git
+- wget http://services.gradle.org/distributions/gradle-4.10.2-bin.zip
+- unzip gradle-4.10.2-bin.zip
 install:
-  - export GRADLE_HOME=$PWD/gradle-4.10.2
-  - export PATH=$GRADLE_HOME/bin:$PATH
-  - export PATH=./flutter/bin:$PATH
+- export GRADLE_HOME=$PWD/gradle-4.10.2
+- export PATH=$GRADLE_HOME/bin:$PATH
+- export PATH=./flutter/bin:$PATH
 script:
-  - flutter build apk
-
+- flutter build apk
 deploy:
   provider: testfairy
   api-key: "$TESTFAIRY_API_KEY"
@@ -33,5 +32,4 @@ env:
     secure: Np9hCu1dRlKwgG6D/rgUUccir/PXpxWxyIYvDDDOpibfVGfOhLrBjLlKSSgRX40hgTDhDX6/lchOXvHfTamQ4l/t0nmGV5DmaOAKTwKqf3tH0jh1jjyM7GI5BdY2Zb+qBbYMRitxypvED/2fwFfFUfU7TuT44dDsLdN4FBHSZx3aka2kgLwOFQl6gGtoyWUzr6s304bh1j48G+UKkVFbJe8YdxjRrBAO76leMpW7EMWl0MZGmOdfxnXDoDiUlNsRy5sXOtevW2+SNjVWNHcNbTfEzV/kuKCVApC7ppr4tBt5gMEitNRL63wjV9lVkeUQaKQe3FoIR6ZyVlDP4P8XqWf5NAJfgfPNsanulILXYC8GJapxbX5198Nmsi7yYcWC5z6n+/SBUoPKHY6YHlQlB4HDdQ2IEWtCXhhFdC1uScVRQ/Q23g1gajnRUGE9up3AMFy4Ooy3p/zT0ncxSu2WIujc0hEzL9tiXi7Q9pCluE3AD25/bwd//722AtVgdnGjOEXapchcS4kpXKjTkGJr09UYp1DlVcusrN0/3BuFVMtl8ol+b2HBZq5eW1ePlJY0eeqGcmKkbRueqpMkWrj6UgAdI5NGJgkZotD72MTfweRMDvW1E9ChLUQKaQHOuc59igUoBld6ZHRdBXw2VGzivE+qlNp9Y4Lkt+VF3QY+fcw=
 cache:
   directories:
-    - $HOME/.pub-cache
-
+  - "$HOME/.pub-cache"
