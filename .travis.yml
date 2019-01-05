@@ -25,6 +25,13 @@ install:
 script:
   - flutter build apk
 
+deploy:
+  provider: testfairy
+  api-key: "$TESTFAIRY_API_KEY"
+  app-file: build/app/outputs/apk/app-release.apk
+env:
+  matrix:
+    secure: Np9hCu1dRlKwgG6D/rgUUccir/PXpxWxyIYvDDDOpibfVGfOhLrBjLlKSSgRX40hgTDhDX6/lchOXvHfTamQ4l/t0nmGV5DmaOAKTwKqf3tH0jh1jjyM7GI5BdY2Zb+qBbYMRitxypvED/2fwFfFUfU7TuT44dDsLdN4FBHSZx3aka2kgLwOFQl6gGtoyWUzr6s304bh1j48G+UKkVFbJe8YdxjRrBAO76leMpW7EMWl0MZGmOdfxnXDoDiUlNsRy5sXOtevW2+SNjVWNHcNbTfEzV/kuKCVApC7ppr4tBt5gMEitNRL63wjV9lVkeUQaKQe3FoIR6ZyVlDP4P8XqWf5NAJfgfPNsanulILXYC8GJapxbX5198Nmsi7yYcWC5z6n+/SBUoPKHY6YHlQlB4HDdQ2IEWtCXhhFdC1uScVRQ/Q23g1gajnRUGE9up3AMFy4Ooy3p/zT0ncxSu2WIujc0hEzL9tiXi7Q9pCluE3AD25/bwd//722AtVgdnGjOEXapchcS4kpXKjTkGJr09UYp1DlVcusrN0/3BuFVMtl8ol+b2HBZq5eW1ePlJY0eeqGcmKkbRueqpMkWrj6UgAdI5NGJgkZotD72MTfweRMDvW1E9ChLUQKaQHOuc59igUoBld6ZHRdBXw2VGzivE+qlNp9Y4Lkt+VF3QY+fcw=
 cache:
   directories:
     - $HOME/.pub-cache
