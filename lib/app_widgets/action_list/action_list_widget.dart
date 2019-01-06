@@ -7,11 +7,12 @@ import 'package:life_planner/models/idea_list.dart';
 
 class ActionListWidget extends StatelessWidget {
 
-  final CollectionReference currentItems = Firestore.instance.collection(
-      'currentItem');
-
   final CollectionReference allActions = Firestore.instance.collection(
       'allActions');
+
+  final Function actionFilter;
+
+  ActionListWidget({Key key, this.actionFilter}) : super(key: key);
 
   updateStatus(Idea idea) {
     print('will update status later');
@@ -37,9 +38,9 @@ class ActionListWidget extends StatelessWidget {
       stream: allActions.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasData) {
-          var actions = snapshot.data.documents
-              .map((DocumentSnapshot document) => Action.fromSnapshot(document))
-              .toList();
+          var actions = actionFilter(
+              snapshot.data.documents.map((DocumentSnapshot document) =>
+                  Action.fromSnapshot(document)));
           var items = getListItems(actions);
 
           return CategoryListWidget(

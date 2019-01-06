@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_planner/app_widgets/action_list/action_list.dart';
 import 'package:life_planner/app_widgets/action_list/action_list_widget.dart';
 
 
@@ -12,17 +13,31 @@ class _ActionPageState extends State<ActionPage> {
 
   bool _showToday = false;
 
-  Widget _actionListWidget = ActionListWidget();
+  Function _actionFilter;
+
+  _ActionPageState() {
+    _actionFilter = this.getActions;
+  }
 
   void _onSwitchChanged(bool value) {
     setState(() {
       _showToday = value;
       if (_showToday) {
-        _actionListWidget = new Text('Showing actions for today');
+        _actionFilter = this.getActiveActions;
       } else {
-        _actionListWidget = ActionListWidget();
+        _actionFilter = this.getActions;
       }
     });
+  }
+
+  List<Action> getActions(Iterable<Action> actionList) {
+    return actionList.toList();
+  }
+
+  List<Action> getActiveActions(Iterable<Action> actionList) {
+    return actionList
+        .where((action) => action.status == 'ACTIVE')
+        .toList();
   }
 
   @override
@@ -30,8 +45,8 @@ class _ActionPageState extends State<ActionPage> {
     return Container(
       child: Column(
         children: <Widget>[
-        ShowTodaySwitchWidget(show: _showToday, onChange: _onSwitchChanged,),
-        _actionListWidget
+          ShowTodaySwitchWidget(show: _showToday, onChange: _onSwitchChanged,),
+          ActionListWidget(actionFilter: _actionFilter,)
         ],
       ),
     );
