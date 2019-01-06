@@ -4,35 +4,17 @@ import 'package:life_planner/models/idea_list.dart';
 
 class CategoryListWidget extends StatelessWidget {
 
-  final List<Idea> ideaList;
+  final List<ListItem> items;
   final Function(Idea idea) onTap;
 
   const CategoryListWidget({
     Key key,
-    this.ideaList,
+    this.items,
     this.onTap
   }) : super(key: key);
 
-  List<ListItem> getListItems(List<Idea> ideas) {
-    var ideasByCategory = groupBy(
-        ideas, (Idea idea) => idea.category);
-    var categories = ideasByCategory.keys;
-    List<ListItem> listItems = [];
-
-    for (var category in categories) {
-      listItems.add(HeadingItem(category));
-      listItems.addAll(
-          ideasByCategory[category].map((Idea idea) =>
-              BasicItem(idea.title, idea))
-      );
-    }
-
-    return listItems;
-  }
-
   @override
   Widget build(BuildContext context) {
-    var items = getListItems(this.ideaList);
 
     return ListView.builder(
       itemCount: items.length,
@@ -82,6 +64,6 @@ class BasicItem implements ListItem {
   final String title;
   final Idea idea;
 
-  BasicItem(this.title, this.idea);
+  BasicItem({this.title, this.idea});
 }
 
