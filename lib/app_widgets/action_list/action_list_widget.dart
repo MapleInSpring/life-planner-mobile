@@ -37,9 +37,11 @@ class ActionListWidget extends StatelessWidget {
       future: actionList,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          var items = getListItems(snapshot.data.ideas);
 
-          return CategoryListWidget(ideaList: snapshot.data.ideas, onTap: this.sendAction);
-
+          return CategoryListWidget(
+              items: items,
+              onTap: this.sendAction);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
