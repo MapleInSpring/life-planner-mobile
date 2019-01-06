@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:life_planner/app_widgets/action_list/action_list.dart';
 import 'package:life_planner/common_widgets/category_list_widget.dart';
@@ -17,9 +18,17 @@ class ActionListWidget extends StatelessWidget {
   }
 
   List<ListItem> getListItems(List<Action> actions) {
-    return actions
-        .map((action) => BasicItem(title: action.title))
-        .toList();
+    var actionsByGoal = groupBy(actions, (Action action) => action.goal);
+    var categories = actionsByGoal.keys;
+    List<ListItem> items = [];
+
+    for (var category in categories) {
+      items.add(HeadingItem(category));
+      items.addAll(actionsByGoal[category].map((Action action) =>
+          BasicItem(title: action.title)));
+    }
+
+    return items;
   }
 
   @override
