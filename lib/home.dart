@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Plan your life!'),
+        title: Text('知行合一'),
       ),
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
