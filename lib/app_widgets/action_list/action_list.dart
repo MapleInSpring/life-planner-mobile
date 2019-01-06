@@ -23,7 +23,7 @@ class Action {
   final DateTime enddate;
   final List<ActionTask> subtasks;
   final String timebox;
-  final String status;
+  final ActionStatus status;
 
   Action({
     this.id,
@@ -41,6 +41,11 @@ class Action {
     List<ActionTask> subtasks = subtasksDocument?.map((task) =>
         ActionTask.fromSnapshot(task));
 
+    var actionStatus = ActionStatus.UNSET;
+    if (document["status"] != null) {
+      actionStatus = ActionStatus.values.firstWhere((s) => s.toString() == document["status"]);
+    }
+
     return Action(
         id: document["id"],
         title: document["title"],
@@ -48,7 +53,8 @@ class Action {
         frequency: document["frequency"],
         enddate: document["enddate"],
         subtasks: subtasks,
-        timebox: document["timebox"]
+        timebox: document["timebox"],
+        status: actionStatus
     );
   }
 
@@ -81,3 +87,5 @@ class ActionTask {
     };
   }
 }
+
+enum ActionStatus { ACTIVE, FINISHED, ONHOLD, UNSET }

@@ -36,7 +36,7 @@ class _ActionPageState extends State<ActionPage> {
 
   List<Action> getActiveActions(Iterable<Action> actionList) {
     return actionList
-        .where((action) => action.status == 'ACTIVE')
+        .where((action) => action.status == ActionStatus.ACTIVE)
         .toList();
   }
 
