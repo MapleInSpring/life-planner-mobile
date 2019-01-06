@@ -22,10 +22,19 @@ class CategoryListWidget extends StatelessWidget {
 
           if (item is HeadingItem) {
             return HeadingItemWidget(item: item,);
-          } else if (item is BasicItem) {
+          }
+
+          if (item is BasicItem) {
             return ListTile(
               title: Text(item.title),
               onTap: () => this.onTap(item.idea),
+            );
+          }
+
+          if (item is DetailedItem) {
+            return ExpansionTile(
+              title: Text(item.title),
+              children: item.children,
             );
           }
         },
@@ -78,3 +87,9 @@ class BasicItem implements ListItem {
   BasicItem({this.title, this.idea});
 }
 
+class DetailedItem implements ListItem {
+  final String title;
+  final List<Widget> children;
+
+  DetailedItem({this.title, this.children});
+}

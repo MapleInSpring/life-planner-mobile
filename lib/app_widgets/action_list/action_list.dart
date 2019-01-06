@@ -38,12 +38,17 @@ class Action {
 
   factory Action.fromSnapshot(DocumentSnapshot document) {
     var subtasksDocument = document["subtasks"] as List;
-    List<ActionTask> subtasks = subtasksDocument?.map((task) =>
-        ActionTask.fromSnapshot(task));
+    List<ActionTask> subtasks = subtasksDocument
+        ?.map((task) => ActionTask.fromSnapshot(task))
+        ?.toList();
+    if (subtasks == null) {
+      subtasks = [];
+    }
 
     var actionStatus = ActionStatus.UNSET;
     if (document["status"] != null) {
-      actionStatus = ActionStatus.values.firstWhere((s) => s.toString() == document["status"]);
+      actionStatus = ActionStatus.values.firstWhere((s) => s.toString() ==
+          document["status"]);
     }
 
     return Action(
@@ -73,10 +78,10 @@ class ActionTask {
 
   ActionTask({this.description, this.date});
 
-  factory ActionTask.fromSnapshot(DocumentSnapshot document) {
+  factory ActionTask.fromSnapshot(Map<dynamic, dynamic> map) {
     return ActionTask(
-        description: document["description"],
-        date: document["date"]
+        description: map["description"],
+        date: map["date"]
     );
   }
 

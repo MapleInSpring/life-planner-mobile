@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:life_planner/app_widgets/action_list/action_list.dart';
 import 'package:life_planner/app_widgets/action_list/action_list_widget.dart';
 
 

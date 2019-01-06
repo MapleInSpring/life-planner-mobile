@@ -32,7 +32,7 @@ class ActionListWidget extends StatelessWidget {
           helper.actionList = actionList;
 
           return CategoryListWidget(
-              items: helper.getFilteredListItem(), onTap: this.updateStatus);
+              items: helper.getListItem(), onTap: this.updateStatus);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
