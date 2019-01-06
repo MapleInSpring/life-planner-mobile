@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:life_planner/app_widgets/action_list/action_list_widget.dart';
-import 'package:life_planner/app_widgets/current_list/current_list_widget.dart';
+import 'package:life_planner/app_widgets/knowledge_list/knowledge_list_widget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,8 +12,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    CurrentItemListWidget(),
-    ActionListWidget()
+    ActionListWidget(),
+    KnowledgeListWidget()
   ];
 
   @override
