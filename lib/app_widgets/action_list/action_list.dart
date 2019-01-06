@@ -23,9 +23,18 @@ class Action {
   final DateTime enddate;
   final List<ActionTask> subtasks;
   final String timebox;
+  final String status;
 
-  Action(
-      {this.id, this.title, this.goal, this.frequency, this.enddate, this.subtasks, this.timebox});
+  Action({
+    this.id,
+    this.title,
+    this.goal,
+    this.frequency,
+    this.enddate,
+    this.subtasks,
+    this.timebox,
+    this.status
+  });
 
   factory Action.fromSnapshot(DocumentSnapshot document) {
     var subtasksDocument = document["subtasks"] as List;
