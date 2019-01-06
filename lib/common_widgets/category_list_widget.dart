@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:life_planner/models/idea_list.dart';
 
@@ -15,39 +14,51 @@ class CategoryListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Flexible(
+      child: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final item = items[index];
 
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-
-        if (item is HeadingItem) {
-          return Container(
-            decoration: new BoxDecoration(
-                color: Theme
-                    .of(context)
-                    .backgroundColor
-            ),
-            child: ListTile(
-                title: Text(
-                    item.heading,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .headline
-                )
-            ),
-          );
-        } else if (item is BasicItem) {
-          return ListTile(
-            title: Text(item.title),
-            onTap: () => this.onTap(item.idea),
-          );
-        }
-      },
+          if (item is HeadingItem) {
+            return HeadingItemWidget(item: item,);
+          } else if (item is BasicItem) {
+            return ListTile(
+              title: Text(item.title),
+              onTap: () => this.onTap(item.idea),
+            );
+          }
+        },
+      ),
     );
   }
 
+}
+
+class HeadingItemWidget extends StatelessWidget {
+  final HeadingItem item;
+
+  const HeadingItemWidget({Key key, this.item}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: new BoxDecoration(
+          color: Theme
+              .of(context)
+              .backgroundColor
+      ),
+      child: ListTile(
+          title: Text(
+              item.heading,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline
+          )
+      ),
+    );
+  }
 }
 
 abstract class ListItem {}
